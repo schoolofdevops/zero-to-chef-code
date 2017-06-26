@@ -13,18 +13,14 @@ user 'dojo' do
   action :remove
 end
 
-
-file '/etc/motd' do
-  mode '0644'
+template '/etc/motd' do 
+  source 'motd.erb'
   owner 'root'
   group 'root'
-  content '
-
-      This server is a property of XYZ Inc.
-
-  '
+  mode  0644
 end
 
-service 'ntp' do
+
+service node['ntp']['service'] do 
   action [ :start, :enable ]
 end

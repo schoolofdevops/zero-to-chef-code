@@ -22,7 +22,9 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[sysfoo]
+      - recipe[java::install]
+      - recipe[tomcat::install]
+      - recipe[tomcat::service]
     verifier:
       inspec_tests:
         - test/recipes

@@ -13,7 +13,7 @@ end
 directory node['tomcat']['deploy']['context_path'] do
   action :nothing
   recursive  true
-  notifies :start, "service[#{node['tomcat']['service']}]", :immediately
+  notifies :restart, "service[#{node['tomcat']['service']}]", :immediately
 end
 
 include_recipe "tomcat::service"
